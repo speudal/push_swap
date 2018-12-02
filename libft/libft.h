@@ -6,7 +6,7 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/26 19:28:15 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/02 16:54:20 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/02 21:31:00 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ char				*ft_strnstr(const char *haystack, const char *needle, \
 								size_t len);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
-int					ft_atoi(const char *str);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
@@ -143,7 +142,7 @@ void				print_lllo(unsigned long long n);
 void				print_lllu(unsigned long long n);
 void				print_lllsx(unsigned long long n);
 void				print_lllbx(unsigned long long n);
-int					ft_atoi(const char *str);
+long long			ft_atoi(const char *str);
 int					ft_isdigit(int c);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strdup(const char *s);

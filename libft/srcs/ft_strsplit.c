@@ -6,7 +6,7 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/28 21:32:21 by tduval            #+#    #+#             */
-/*   Updated: 2018/11/09 16:44:05 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/02 21:31:53 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 static	size_t	ft_count_words(char const *s, char c)
 {
-	size_t	i;
 	size_t	ct;
 
-	i = 0;
 	ct = 0;
 	while (*s)
 	{

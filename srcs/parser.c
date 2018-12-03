@@ -6,12 +6,12 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 22:15:13 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/03 00:46:31 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/03 03:48:59 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
+#include "./libft/libft.h"
 #include "push_swap.h"
 
 static int	check_stack(int *stack, int c)
@@ -20,9 +20,8 @@ static int	check_stack(int *stack, int c)
 	int j;
 	int tmp;
 
-	i = 0;
-	j = 0;
-	while (i < c)
+	i = 1;
+	while (i < stack[0])
 	{
 		j = i + 1;
 		while (j < c)
@@ -115,11 +114,11 @@ int		**cat_params(int ac, char **av, int *c)
 			(*c)++;
 		}
 		i++;
-	}/*
+	}
 	if (check_stack(stacks[0], *c) == 0)
 	{
-		free_all(stacks);
+		free_all(stacks, 0);
 		return (0);
-	}*/
+	}
 	return (stacks);
 }

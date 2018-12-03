@@ -6,7 +6,7 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 01:35:05 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/03 02:03:29 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/03 03:31:55 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,17 @@ void	sale_sort(int **stacks)
 		}
 		while (tmp > 1)
 		{
-			ra(stacks);
+			ra(stacks, 1);
 			tmp--;
 		}
-		pb(stacks);
+		pb(stacks, 1);
 	}
 	i = 0;
 	tmp = stacks[1][0];
 	while (i < tmp)
 	{
-		rrb(stacks);
-		pa(stacks);
+		rrb(stacks, 1);
+		pa(stacks, 1);
 		i++;
 	}
 }

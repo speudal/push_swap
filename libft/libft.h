@@ -6,7 +6,7 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/26 19:28:15 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/02 21:31:00 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/03 03:17:10 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <string.h>
 # include <stdarg.h>
+
+# define	BUFF_SIZE	4
 
 typedef struct		s_list
 {
@@ -159,5 +161,6 @@ int					dispatcher(t_flags elem, va_list ap);
 int					check_sizes(char *str, char conv);
 t_flags				fill_flags(const char *str);
 t_flags				*get_flags(const char *str, int *ct);
+int					get_next_line(const int fd, char **line);
 
 #endif

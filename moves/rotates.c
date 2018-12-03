@@ -6,18 +6,19 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 01:02:05 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/03 01:57:31 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/03 04:02:40 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ra(int **stacks)
+void	ra(int **stacks, int u)
 {
 	int	i;
 	int	t;
 
-	ft_printf("ra\n");
+	if (u)
+		ft_putstr("ra\n");
 	i = 1;
 	while (i < stacks[0][0])
 	{
@@ -26,12 +27,13 @@ void	ra(int **stacks)
 	}
 }
 
-void	rb(int **stacks)
+void	rb(int **stacks, int u)
 {
 	int	i;
 	int	t;
 
-	ft_printf("rb\n");
+	if (u)
+		ft_putstr("rb\n");
 	i = 1;
 	while (i < stacks[1][0])
 	{
@@ -40,9 +42,10 @@ void	rb(int **stacks)
 	}
 }
 
-void	rr(int **stacks)
+void	rr(int **stacks, int u)
 {
-	ft_printf("rr\n");
-	ra(stacks);
-	rb(stacks);
+	if (u)
+		ft_putstr("rr\n");
+	ra(stacks, u);
+	rb(stacks, u);
 }

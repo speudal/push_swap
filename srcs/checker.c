@@ -6,7 +6,7 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 16:34:42 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/03 02:26:37 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/03 04:08:59 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include "libft.h"
 #include "push_swap.h"
-
+/*
 static void	print_stacks(int **stacks, int c)
 {
 	int		i;
@@ -37,36 +37,82 @@ static void	print_stacks(int **stacks, int c)
 			ft_putchar('\n');
 	}
 	ft_putchar('\n');
+}*/
+
+static int	check_sorted(int **stacks)
+{
+	int	i;
+
+	i = 1;
+	while (i < stacks[0][0])
+	{
+		if (stacks[0][i] > stacks[0][i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
-void		free_all(int **stacks)
+static int	do_swap(char *line, int **stacks)
 {
-	if (stacks)
-	{
-		if (stacks[0])
-			free(stacks[0]);
-		if (stacks[1])
-			free(stacks[1]);
-		free(stacks);
-	}
+	if (!(ft_strcmp(line, "sa")))
+		sa(stacks, 0);
+	else if (!(ft_strcmp(line, "sb")))
+		sb(stacks, 0);
+	else if (!(ft_strcmp(line, "ss")))
+		ss(stacks, 0);
+	else if (!(ft_strcmp(line, "pa")))
+		pa(stacks, 0);
+	else if (!(ft_strcmp(line, "pb")))
+		pb(stacks, 0);
+	else if (!(ft_strcmp(line, "ra")))
+		ra(stacks, 0);
+	else if (!(ft_strcmp(line, "rb")))
+		rb(stacks, 0);
+	else if (!(ft_strcmp(line, "rr")))
+		rr(stacks, 0);
+	else if (!(ft_strcmp(line, "rra")))
+		rra(stacks, 0);
+	else if (!(ft_strcmp(line, "rrb")))
+		rrb(stacks, 0);
+	else if (!(ft_strcmp(line, "rrr")))
+		rrr(stacks, 0);
+	else
+		return (0);
+	return (1);
 }
 
 int			main(int ac, char **av)
 {
-	int		**stacks;
-	int		c;
+	const int		fd;
+	char		*line;
+	int			**stacks;
+	int			c;
 
 	c = 0;
 	stacks = 0;
+	line = 0;
+	fd = open(fd, O_RDONLY);
 	if (!(stacks = cat_params(ac, av, &c)) || ac < 2)
 	{
-		ft_printf("Error\n");
-		free_all(stacks);
+		ft_putstr("Error\n");
+		free_all(stacks, 0);
 		return (0);
 	}
-	//print_stacks(stacks, c);
-	sale_sort(stacks);
-	//print_stacks(stacks, c);
-	free_all(stacks);
+	while (get_next_line(fd, &line))
+	{
+		ft_putstr(line);
+		if (!(do_swap(line, stacks)))
+		{
+			free_all(stacks, line);
+			return (0);
+		}
+	}
+	if (check_sorted(stacks))
+		ft_putstr("OK\n");
+	else
+		ft_putstr("KO\n");
+	free_all(stacks, line);
+	close(fd);
 	return (0);
 }

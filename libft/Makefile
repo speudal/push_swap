@@ -6,7 +6,7 @@
 #    By: tduval <tduval@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/22 13:08:51 by tduval            #+#    #+#              #
-#    Updated: 2018/12/02 17:07:51 by tduval           ###   ########.fr        #
+#    Updated: 2018/12/03 03:18:15 by tduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,7 +120,8 @@ SRCS	=	./srcs/dispatcher.c		\
 			./srcs/print_per.c		\
 			./srcs/print_s.c		\
 			./srcs/print_sx.c		\
-			./srcs/print_u.c
+			./srcs/print_u.c		\
+			./srcs/get_next_line.c
 
 OBJS =	$(SRCS:.c=.o)
 

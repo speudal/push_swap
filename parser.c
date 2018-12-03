@@ -6,7 +6,7 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 22:15:13 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/02 22:57:08 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/03 00:46:31 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,14 @@ int		**cat_params(int ac, char **av, int *c)
 		return (0);
 	if (!(stacks = (int **)malloc(sizeof(int *) * 2)))
 		return (0);
-	if (!(stacks[0] = (int *)malloc(sizeof(int) * (*c))))
+	if (!(stacks[0] = (int *)malloc(sizeof(int) * (*c + 1))))
 		return (0);
-	if (!(stacks[1] = (int *)malloc(sizeof(int) * (*c))))
+	if (!(stacks[1] = (int *)malloc(sizeof(int) * (*c + 1))))
 		return (0);
 	i = 1;
-	*c = 0;
+	stacks[0][0] = *c;
+	stacks[1][0] = 0;
+	*c = 1;
 	while (i < ac)
 	{
 		j = 0;
@@ -113,11 +115,11 @@ int		**cat_params(int ac, char **av, int *c)
 			(*c)++;
 		}
 		i++;
-	}
+	}/*
 	if (check_stack(stacks[0], *c) == 0)
 	{
 		free_all(stacks);
 		return (0);
-	}
+	}*/
 	return (stacks);
 }

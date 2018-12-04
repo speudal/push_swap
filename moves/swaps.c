@@ -6,7 +6,7 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 23:41:18 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/03 04:02:18 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/04 01:22:28 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ void	ss(int **stacks, int u)
 {
 	if (u)
 		ft_putstr("ss\n");
-	sa(stacks, u);
-	sb(stacks, u);
+	sa(stacks, 0);
+	sb(stacks, 0);
 }

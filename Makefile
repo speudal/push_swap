@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tduval <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: tduval <tduval@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/02 17:10:02 by tduval            #+#    #+#              #
-#    Updated: 2018/12/02 17:39:22 by tduval           ###   ########.fr        #
+#    Updated: 2018/12/03 22:59:46 by tduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,25 +14,31 @@ NAME_CHECKER		=	checker
 
 NAME_PUSH_SWAP		=	push_swap
 
-CFLAGS				=	-Wall -Werror -Wextra ./libft/libft.a -I ./libft
+FLAGS				=	-Wall -Werror -Wextra
 
-MAKE_LIBFT			=	$(MAKE) -C ./libft
+MAKE_LIBFT			=	$(MAKE) ./libft
 
-SRCS				=	./checker.c
+SRCS_CHECKER		=	./srcs/checker.c				\
+						./srcs/free_all.c			\
+						./srcs/parser.c				\
+						./moves/pushs.c				\
+						./moves/reverse_rotates.c	\
+						./moves/rotates.c			\
+						./moves/swaps.c
 
-OBJS				=	$(SRCS:.c=.o)
 
-CC					=	gcc $(OBJS)
+OBJS_CHECKER		=	$(SRCS_CHECKER:.c=.o)
 
-all		:	$(NAME_CHECKER) $(NAME_PUSH_SWAP)
+all		:	$(NAME_CHECKER) #$(NAME_PUSH_SWAP)
 
-$(NAME_CHECKER)	:	$(MAKE_LIBFT) $(OBJS)
-	$(CC) $(OBJS) -o $(NAME_CHECKER)
+$(NAME_CHECKER)	:
+	$(MAKE) -C libft/
+	gcc -c $(SRCS_CHECKER) $(FLAGS) -I libft/ -I.
+	gcc -o $(NAME_CHECKER) *.o libft/libft.a
 
 $(NAME_PUSH_SWAP) :
 	$(OBJS)
 	$(CC) $(OBJS) -o $(NAME_PUSH_SWAP)
-
 
 clean	:
 	$(MAKE) -C libft/ clean

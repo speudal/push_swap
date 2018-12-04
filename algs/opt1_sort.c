@@ -1,16 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sale_sort.c                                        :+:      :+:    :+:   */
+/*   opt1_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/03 01:35:05 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/04 03:20:17 by tduval           ###   ########.fr       */
+/*   Created: 2018/12/03 23:19:57 by tduval            #+#    #+#             */
+/*   Updated: 2018/12/04 01:14:59 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
 
 static int  stacks_sorted(int *stacks)
@@ -41,50 +40,19 @@ static int  stacks_sorted(int *stacks)
     return (f);
 }
 
-void	sale_sort(int **stacks)
+void        opt1_sort(int **stacks)
 {
-	int			tmp;
-	int			i;
-	int			j;
+    int i;
+    int tmp;
 
-	if (stacks[0][1] > stacks[0][2] && stacks[0][0] > 1)
-		sa(stacks, 1);
-	while (stacks[0][0] && stacks_sorted(stacks[0]) != 2)
-	{
-		i = 1;
-		tmp = 1;
-		if (stacks[0][1] > stacks[0][2] && stacks[0][0] > 1)
-			sa(stacks, 1);
-		while (i < stacks[0][0] + 1)
-		{
-			if (stacks[0][i] < stacks[0][tmp])
-				tmp = i;
-			i++;
-		}
-		if (tmp > stacks[0][0] / 2)
-		{
-			tmp = stacks[0][0] - tmp;
-			while (tmp > -1)
-			{
-				rra(stacks, 1);
-				tmp--;
-			}
-		}
-		else
-		{
-			while (tmp > 1)
-			{
-				ra(stacks, 1);
-				tmp--;
-			}
-		}
-		pb(stacks, 1);
-	}
-	i = 0;
-	tmp = stacks[1][0];
-	while (i < tmp)
-	{
-		pa(stacks, 1);
-		i++;
-	}
+    i = 1;
+    while (stacks_sorted(stacks[0]) != 2)
+    {
+        while (stacks[0][i] < stacks[0][i + 1] && i < stacks[0][0])
+            pb(stacks, 1);
+        if (stacks[0][i] > stacks[0][i + 1] && i < stacks[0][0])
+            sa(stacks, 1);
+    } 
+    while (stacks[1][0])
+        pa(stacks, 1);
 }

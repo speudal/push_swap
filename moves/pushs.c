@@ -6,7 +6,7 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 23:48:28 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/03 04:02:54 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/03 21:31:24 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	pa(int **stacks, int u)
 			ft_swap(&stacks[1][i], &stacks[1][i + 1]);
 			i++;
 		}
-		i = stacks[0][0] + 1;
+		i = stacks[0][0];
 		while (i > 1)
 		{
 			ft_swap(&stacks[0][i], &stacks[0][i - 1]);
@@ -59,7 +59,7 @@ void	pb(int **stacks, int u)
 			ft_swap(&stacks[0][i], &stacks[0][i + 1]);
 			i++;
 		}
-		i = stacks[1][0] + 1;
+		i = stacks[1][0];
 		while (i > 1)
 		{
 			ft_swap(&stacks[1][i], &stacks[1][i - 1]);

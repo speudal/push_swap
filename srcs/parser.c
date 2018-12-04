@@ -6,7 +6,7 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 22:15:13 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/03 03:48:59 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/04 02:53:57 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static int	check_stack(int *stack, int c)
 {
 	int i;
 	int j;
-	int tmp;
 
 	i = 1;
 	while (i < stack[0])
@@ -40,7 +39,7 @@ static int check_arg(char *avv, int *c)
 	int j;
 
 	j = 0;
-	while (j < ft_strlen(avv))
+	while (j < (int)ft_strlen(avv))
 	{
 		if (avv[j] == '-' || avv[j] == '+' || ft_isdigit(avv[j]))
 		{
@@ -48,13 +47,13 @@ static int check_arg(char *avv, int *c)
 				return (0);
 			if (avv[j] == '+' || avv[j] == '-')
 				j++;
-			while (j < ft_strlen(avv) && ft_isdigit(avv[j]))
+			while (j < (int)ft_strlen(avv) && ft_isdigit(avv[j]))
 				j++;
 			(*c)++;
 		}
 		else if (avv[j])
 			return (0);
-		if (avv[j] && avv[j] != ' ')
+		if ((avv[j] && avv[j] != ' ') || (!avv[j + 1] && avv[j] == ' '))
 			return (0);
 		j++;
 	}
@@ -70,8 +69,6 @@ static int check_args(int ac, char **av, int *c)
 	while (i < ac)
 	{
 		j = 0;
-		if (!(av[i] = ft_strtrim(av[i])))
-			return (0);
 		if (!av[i][0])
 			return (0);
 		if (!(check_arg(av[i], c)))
@@ -87,7 +84,6 @@ int		**cat_params(int ac, char **av, int *c)
 	int i;
 	int j;
 
-	stacks = 0;
 	i = 1;
 	if (!(check_args(ac, av, c)))
 		return (0);

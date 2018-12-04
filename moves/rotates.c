@@ -6,7 +6,7 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 01:02:05 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/03 04:02:40 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/04 01:22:09 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ra(int **stacks, int u)
 {
 	int	i;
-	int	t;
 
 	if (u)
 		ft_putstr("ra\n");
@@ -30,7 +29,6 @@ void	ra(int **stacks, int u)
 void	rb(int **stacks, int u)
 {
 	int	i;
-	int	t;
 
 	if (u)
 		ft_putstr("rb\n");
@@ -46,6 +44,6 @@ void	rr(int **stacks, int u)
 {
 	if (u)
 		ft_putstr("rr\n");
-	ra(stacks, u);
-	rb(stacks, u);
+	ra(stacks, 0);
+	rb(stacks, 0);
 }

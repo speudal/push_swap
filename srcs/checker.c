@@ -6,7 +6,7 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 16:34:42 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/03 04:08:59 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/03 23:18:46 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include "libft.h"
 #include "push_swap.h"
+
 /*
 static void	print_stacks(int **stacks, int c)
 {
@@ -84,7 +85,6 @@ static int	do_swap(char *line, int **stacks)
 
 int			main(int ac, char **av)
 {
-	const int		fd;
 	char		*line;
 	int			**stacks;
 	int			c;
@@ -92,27 +92,28 @@ int			main(int ac, char **av)
 	c = 0;
 	stacks = 0;
 	line = 0;
-	fd = open(fd, O_RDONLY);
 	if (!(stacks = cat_params(ac, av, &c)) || ac < 2)
 	{
 		ft_putstr("Error\n");
 		free_all(stacks, 0);
 		return (0);
 	}
-	while (get_next_line(fd, &line))
+	while (get_next_line(0, &line))
 	{
-		ft_putstr(line);
 		if (!(do_swap(line, stacks)))
 		{
+			ft_putstr("Error\n");
 			free_all(stacks, line);
 			return (0);
 		}
 	}
 	if (check_sorted(stacks))
+	{
 		ft_putstr("OK\n");
+		return (0);
+	}
 	else
 		ft_putstr("KO\n");
 	free_all(stacks, line);
-	close(fd);
 	return (0);
 }

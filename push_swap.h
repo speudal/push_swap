@@ -6,7 +6,7 @@
 /*   By: tduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 22:24:26 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/03 03:36:41 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/03 23:33:17 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 int			**cat_params(int ac, char **av, int *c);
 void		free_all(int **stacks, char *line);
 void		sale_sort(int **stacks);
+void        opt1_sort(int **stacks);
 void		sa(int **stacks, int u);
 void		sb(int **stacks, int u);
 void		ss(int **stacks, int u);

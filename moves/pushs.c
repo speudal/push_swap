@@ -6,65 +6,39 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 23:48:28 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/03 21:31:24 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/06 08:12:34 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 #include "libft.h"
 
-void	pa(int **stacks, int u)
+void	pa(t_list **stack_a, t_list **stack_b, int u)
 {
-	int	i;
-	int	t;
+	t_list	*cp;
 
-	if (stacks[1][0] > 0)
+	if (u)
+		ft_putstr("pa\n");
+	if (stack_b)
 	{
-		i = 1;
-		t = stacks[1][1];
-		if (u)
-			ft_putstr("pa\n");
-		stacks[1][0]--;
-		stacks[0][0]++;
-		while (i < stacks[1][0] + 1)
-		{
-			ft_swap(&stacks[1][i], &stacks[1][i + 1]);
-			i++;
-		}
-		i = stacks[0][0];
-		while (i > 1)
-		{
-			ft_swap(&stacks[0][i], &stacks[0][i - 1]);
-			i--;
-		}
-		stacks[0][1] = t;
+		cp = *stack_b;
+		*stack_b = (*stack_b)->next;
+		cp->next = *stack_a;
+		*stack_a = cp;
 	}
 }
 
-
-void	pb(int **stacks, int u)
+void	pb(t_list **stack_a, t_list **stack_b, int u)
 {
-	int	i;
-	int	t;
-
-	if (stacks[0][0] > 0)
+	t_list	*cp;
+	
+	if (u)
+		ft_putstr("pb\n");
+	if (stack_a)
 	{
-		i = 1;
-		t = stacks[0][1];
-		stacks[0][0]--;
-		stacks[1][0]++;
-		if (u)
-			ft_putstr("pb\n");
-		while (i < stacks[0][0] + 1)
-		{
-			ft_swap(&stacks[0][i], &stacks[0][i + 1]);
-			i++;
-		}
-		i = stacks[1][0];
-		while (i > 1)
-		{
-			ft_swap(&stacks[1][i], &stacks[1][i - 1]);
-			i--;
-		}
-		stacks[1][1] = t;
+		cp = *stack_a;
+		*stack_a = (*stack_a)->next;
+		cp->next = *stack_b;
+		*stack_b = cp;
 	}
 }

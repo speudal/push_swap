@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdel.c                                        :+:      :+:    :+:   */
+/*   lst_pushback.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 03:19:08 by tduval            #+#    #+#             */
-/*   Updated: 2018/11/09 16:26:03 by tduval           ###   ########.fr       */
+/*   Created: 2018/12/06 04:50:27 by tduval            #+#    #+#             */
+/*   Updated: 2018/12/06 09:32:22 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
+#include "push_swap.h"
 
-void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+t_list	*lst_pushback(t_list *lst, int num)
 {
-	if (*alst && del)
+	t_list	*top;
+	t_list	*elem;
+
+	top = lst;
+	if (lst)
 	{
-		ft_lstdel(&(*alst)->next, del);
-		ft_lstdelone(alst, del);
+		if (!(elem = lst_new(num)))
+			return (0);
+		while (lst->next)
+			lst = lst->next;
+		lst->next = elem;
 	}
+	return (top);
 }

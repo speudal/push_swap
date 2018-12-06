@@ -6,36 +6,49 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 23:41:18 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/04 01:22:28 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/06 09:17:05 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 #include "libft.h"
 
-void	sa(int **stacks, int u)
+void	sa(t_list **stack_a, int u)
 {
-	if (stacks[0][0] > 1)
+	t_list *cp;
+
+	cp = 0;
+	if (*stack_a && (*stack_a)->next)
 	{
 		if (u)
 			ft_putstr("sa\n");
-		ft_swap(&stacks[0][1], &stacks[0][2]);
+		cp = (*stack_a)->next;
+		(*stack_a)->next = (*stack_a)->next->next;
+		cp->next = *stack_a;
+		*stack_a = cp;
 	}
 }
 
-void	sb(int **stacks, int u)
+void	sb(t_list **stack_b, int u)
 {
-	if (stacks[1][0] > 1)
+	t_list *cp;
+
+	cp = 0;
+	if (*stack_b && (*stack_b)->next)
 	{
 		if (u)
-			ft_putstr("sb\n");
-		ft_swap(&stacks[1][1], &stacks[1][2]);
+			ft_putstr("sa\n");
+		cp = (*stack_b)->next;
+		(*stack_b)->next = (*stack_b)->next->next;
+		cp->next = *stack_b;
+		*stack_b = cp;
 	}
 }
 
-void	ss(int **stacks, int u)
+void	ss(t_list *stack_a, t_list *stack_b, int u)
 {
 	if (u)
 		ft_putstr("ss\n");
-	sa(stacks, 0);
-	sb(stacks, 0);
+	sa(&stack_a, 0);
+	sb(&stack_b, 0);
 }

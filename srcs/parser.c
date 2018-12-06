@@ -6,7 +6,7 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 22:15:13 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/04 02:53:57 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/06 10:35:53 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,25 @@
 #include "./libft/libft.h"
 #include "push_swap.h"
 
-static int	check_stack(int *stack, int c)
+static int		check_stack(t_list *stack)
 {
-	int i;
-	int j;
+	t_list	*i;
 
-	i = 1;
-	while (i < stack[0])
+	while (stack->next)
 	{
-		j = i + 1;
-		while (j < c)
+		i = stack->next;
+		while (i)
 		{
-			if (stack[j] == stack[i])
+			if (stack->n == i->n)
 				return (0);
-			j++;
+			i = i->next;
 		}
-		i++;
+		stack = stack->next;
 	}
 	return (1);
 }
 
-static int check_arg(char *avv, int *c)
+static int		check_arg(char *avv, int *c)
 {
 	int j;
 
@@ -60,7 +58,7 @@ static int check_arg(char *avv, int *c)
 	return (1);
 }
 
-static int check_args(int ac, char **av, int *c)
+static int		check_args(int ac, char **av, int *c)
 {
 	int i;
 	int j;
@@ -75,28 +73,15 @@ static int check_args(int ac, char **av, int *c)
 			return (0);
 		i++;
 	}
-return (1);
+	return (1);
 }
 
-int		**cat_params(int ac, char **av, int *c)
+static void		fill_stack(int ac, char **av, t_list **stack_a)
 {
-	int	**stacks;
-	int i;
-	int j;
+	int		i;
+	int		j;
 
 	i = 1;
-	if (!(check_args(ac, av, c)))
-		return (0);
-	if (!(stacks = (int **)malloc(sizeof(int *) * 2)))
-		return (0);
-	if (!(stacks[0] = (int *)malloc(sizeof(int) * (*c + 1))))
-		return (0);
-	if (!(stacks[1] = (int *)malloc(sizeof(int) * (*c + 1))))
-		return (0);
-	i = 1;
-	stacks[0][0] = *c;
-	stacks[1][0] = 0;
-	*c = 1;
 	while (i < ac)
 	{
 		j = 0;
@@ -104,17 +89,35 @@ int		**cat_params(int ac, char **av, int *c)
 		{
 			while (av[i][j] == ' ' && av[i][j])
 				j++;
-			stacks[0][*c] = ft_atoi(av[i] + j);
-			while ((ft_isdigit(av[i][j]) || av[i][j] == '-' || av[i][j] == '+') && av[i][j])
+			if (*stack_a)
+				*stack_a = lst_pushback(*stack_a, ft_atoi(av[i] + j));
+			else
+				*stack_a = lst_new(ft_atoi(av[i] + j));
+			while ((ft_isdigit(av[i][j]) || av[i][j] == '-'
+						|| av[i][j] == '+') && av[i][j])
 				j++;
-			(*c)++;
 		}
 		i++;
 	}
-	if (check_stack(stacks[0], *c) == 0)
+}
+
+t_list			*cat_params(int ac, char **av, int *c)
+{
+	t_list	*stack_a;
+	int		i;
+	int		j;
+
+	i = 1;
+	j = 0;
+	stack_a = 0;
+	if (!(check_args(ac, av, c)))
+		return (0);
+	*c = 1;
+	fill_stack(ac, av, &stack_a);
+	if (check_stack(stack_a) == 0)
 	{
-		free_all(stacks, 0);
+		lst_free(&stack_a, 0);
 		return (0);
 	}
-	return (stacks);
+	return (stack_a);
 }

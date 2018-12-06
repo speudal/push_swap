@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_all.c                                         :+:      :+:    :+:   */
+/*   lst_new.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/03 03:38:13 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/03 21:41:13 by tduval           ###   ########.fr       */
+/*   Created: 2018/12/06 03:51:46 by tduval            #+#    #+#             */
+/*   Updated: 2018/12/06 04:09:25 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "push_swap.h"
 
-void	free_all(int **stacks, char *line)
+t_list	*lst_new(int num)
 {
-	if (stacks)
-		free(stacks);
-	if (line)
-		free(line);
+	t_list	*lst;
+
+	if (!(lst = (t_list *)malloc(sizeof(t_list))))
+		return (0);
+	lst->n = num;
+	lst->next = 0;
+	return (lst);
 }

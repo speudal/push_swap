@@ -6,27 +6,39 @@
 /*   By: tduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 22:24:26 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/03 23:33:17 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/06 09:14:46 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-int			**cat_params(int ac, char **av, int *c);
-void		free_all(int **stacks, char *line);
-void		sale_sort(int **stacks);
+typedef struct		s_list
+{
+	int				n;
+	struct s_list	*next;
+}					t_list;
+
+t_list		*cat_params(int ac, char **av, int *c);
+void		sale_sort(t_list **stack_a, t_list **stack_b);
 void        opt1_sort(int **stacks);
-void		sa(int **stacks, int u);
-void		sb(int **stacks, int u);
-void		ss(int **stacks, int u);
-void		pa(int **stacks, int u);
-void		pb(int **stacks, int u);
-void		ra(int **stacks, int u);
-void		rb(int **stacks, int u);
-void		rr(int **stacks, int u);
-void		rra(int **stacks, int u);
-void		rrb(int **stacks, int u);
-void		rrr(int **stacks, int u);
+void		sa(t_list **stack_a, int u);
+void		sb(t_list **stack_b, int u);
+void		ss(t_list *stack_a, t_list *stack_b, int u);
+void		pa(t_list **stack_a, t_list **stack_b, int u);
+void		pb(t_list **stack_a, t_list **stack_b, int u);
+void		ra(t_list **stack_a, int u);
+void		rb(t_list **stack_b, int u);
+void		rr(t_list *stack_a, t_list *stack_b, int u);
+void		rra(t_list **stack_a, int u);
+void		rrb(t_list **stack_b, int u);
+void		rrr(t_list *stack_a, t_list *stack_b, int u);
+t_list		*lst_new(int num);
+t_list		*lst_pushfront(t_list *lst, int num);
+t_list		*lst_pushback(t_list *lst, int num);
+t_list		*lst_popfront(t_list *lst);
+t_list		*lst_popback(t_list *lst);
+void		lst_free(t_list **stack_a, t_list **stack_b);
+void		print_stacks(t_list *stack_a, t_list *stack_b);
 
 #endif

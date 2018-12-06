@@ -6,7 +6,7 @@
 #    By: tduval <tduval@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/22 13:08:51 by tduval            #+#    #+#              #
-#    Updated: 2018/12/03 03:18:15 by tduval           ###   ########.fr        #
+#    Updated: 2018/12/06 09:38:24 by tduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,6 @@ SRCS	=	./srcs/dispatcher.c		\
 			./srcs/ft_isdigit.c		\
 			./srcs/ft_isprint.c		\
 			./srcs/ft_itoa.c		\
-			./srcs/ft_lstadd.c		\
-			./srcs/ft_lstdel.c		\
-			./srcs/ft_lstdelone.c	\
-			./srcs/ft_lstiter.c		\
-			./srcs/ft_lstmap.c		\
-			./srcs/ft_lstnew.c		\
 			./srcs/ft_memalloc.c	\
 			./srcs/ft_memccpy.c		\
 			./srcs/ft_memchr.c		\
@@ -129,15 +123,15 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
-	@echo "\x1b[32;01m[LIBFT COMPILED]"
+	@echo "[LIBFT COMPILED]"
 
 clean :
 	@rm -f $(OBJS)
-	@echo "\x1b[32;01m[OBJS CLEANED]"
+	@echo "[OBJS CLEANED]"
 
 fclean : clean
 	@rm -f $(NAME)
-	@echo "\x1b[32;01m[LIBFT.A CLEANED]"
+	@echo "[LIBFT.A CLEANED]"
 
 re : fclean all
 

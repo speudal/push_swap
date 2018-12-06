@@ -6,43 +6,57 @@
 #    By: tduval <tduval@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/02 17:10:02 by tduval            #+#    #+#              #
-#    Updated: 2018/12/03 22:59:46 by tduval           ###   ########.fr        #
+#    Updated: 2018/12/06 10:20:27 by tduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+.PHONY : all clean fclean re
 
 NAME_CHECKER		=	checker
 
 NAME_PUSH_SWAP		=	push_swap
 
-FLAGS				=	-Wall -Werror -Wextra
+CFLAGS				=	-Wall -Werror -Wextra -I libft/ -I.
 
-MAKE_LIBFT			=	$(MAKE) ./libft
-
-SRCS_CHECKER		=	./srcs/checker.c				\
-						./srcs/free_all.c			\
+SRCS_CHECKER		=	./srcs/checker.c			\
 						./srcs/parser.c				\
+						./liblst/lst_free.c			\
+						./liblst/lst_new.c			\
+						./liblst/lst_pushback.c		\
 						./moves/pushs.c				\
 						./moves/reverse_rotates.c	\
 						./moves/rotates.c			\
 						./moves/swaps.c
 
+SRCS_PUSH_SWAP		=	./srcs/push_swap.c			\
+						./srcs/parser.c				\
+						./liblst/lst_free.c			\
+						./liblst/lst_new.c			\
+						./liblst/lst_pushback.c		\
+						./moves/pushs.c				\
+						./moves/reverse_rotates.c	\
+						./moves/rotates.c			\
+						./moves/swaps.c				\
+						./algs/sale_sort.c
 
 OBJS_CHECKER		=	$(SRCS_CHECKER:.c=.o)
 
-all		:	$(NAME_CHECKER) #$(NAME_PUSH_SWAP)
+OBJS_PUSH_SWAP		=	$(SRCS_PUSH_SWAP:.c=.o)
 
-$(NAME_CHECKER)	:
+all		:	$(NAME_CHECKER) $(NAME_PUSH_SWAP)
+
+$(NAME_CHECKER)	: $(OBJS_CHECKER)
 	$(MAKE) -C libft/
-	gcc -c $(SRCS_CHECKER) $(FLAGS) -I libft/ -I.
-	gcc -o $(NAME_CHECKER) *.o libft/libft.a
+	gcc -o $(NAME_CHECKER) $(OBJS_CHECKER) libft/libft.a
 
-$(NAME_PUSH_SWAP) :
-	$(OBJS)
-	$(CC) $(OBJS) -o $(NAME_PUSH_SWAP)
+$(NAME_PUSH_SWAP) : $(OBJS_PUSH_SWAP)
+	$(MAKE) -C libft/
+	gcc -o $(NAME_PUSH_SWAP) $(OBJS_PUSH_SWAP) libft/libft.a
 
 clean	:
 	$(MAKE) -C libft/ clean
-	rm -f $(OBJS)
+	rm -f $(OBJS_CHECKER)
+	rm -f $(OBJS_PUSH_SWAP)
 
 fclean	:	clean
 	$(MAKE) -C libft/ fclean

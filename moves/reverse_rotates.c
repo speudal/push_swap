@@ -3,47 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotates.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/03 00:51:59 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/04 01:21:58 by tduval           ###   ########.fr       */
+/*   Created: 2018/12/06 07:35:27 by tduval            #+#    #+#             */
+/*   Updated: 2018/12/06 09:26:20 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 #include "libft.h"
 
-void	rra(int **stacks, int u)
+void	rra(t_list **stack_a, int u)
 {
-	int	i;
+	t_list	*cp;
+	t_list	*re;
 
-	i = stacks[0][0];
+	re = 0;
+	cp = 0;
 	if (u)
 		ft_putstr("rra\n");
-	while (i > 1)
+	if (*stack_a)
 	{
-		ft_swap(&stacks[0][i], &stacks[0][i - 1]);
-		i--;
+		re = (*stack_a);
+		while ((*stack_a)->next->next)
+			*stack_a = (*stack_a)->next;
+		cp = (*stack_a)->next;
+		(*stack_a)->next->next = re;
+		(*stack_a)->next = 0;
 	}
+	*stack_a = cp;
 }
 
-void	rrb(int **stacks, int u)
+void	rrb(t_list **stack_b, int u)
 {
-	int	i;
+	t_list	*cp;
+	t_list	*re;
 
+	re = 0;
+	cp = 0;
 	if (u)
-		ft_putstr("rrb\n");
-	i = stacks[1][0];
-	while (i > 1)
+		ft_putstr("rra\n");
+	if (*stack_b)
 	{
-		ft_swap(&stacks[1][i], &stacks[1][i - 1]);
-		i--;
+		re = (*stack_b);
+		while ((*stack_b)->next->next)
+			*stack_b = (*stack_b)->next;
+		cp = (*stack_b)->next;
+		(*stack_b)->next->next = re;
+		(*stack_b)->next = 0;
 	}
+	*stack_b = cp;
 }
 
-void	rrr(int **stacks, int u)
+void	rrr(t_list *stack_a, t_list *stack_b, int u)
 {
 	if (u)
 		ft_putstr("rrr\n");
-	rra(stacks, 0);
-	rrb(stacks, 0);
+	rra(&stack_a, 0);
+	rrb(&stack_b, 0);
 }

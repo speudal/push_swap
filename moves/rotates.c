@@ -3,47 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   rotates.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/03 01:02:05 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/04 01:22:09 by tduval           ###   ########.fr       */
+/*   Created: 2018/12/06 07:35:07 by tduval            #+#    #+#             */
+/*   Updated: 2018/12/06 07:48:27 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 #include "libft.h"
 
-void	ra(int **stacks, int u)
+void	ra(t_list **stack_a, int u)
 {
-	int	i;
+	t_list	*cp;
+	t_list	*re;
 
+	re = 0;
 	if (u)
 		ft_putstr("ra\n");
-	i = 1;
-	while (i < stacks[0][0])
+	if (*stack_a)
 	{
-		ft_swap(&stacks[0][i], &stacks[0][i + 1]);
-		i++;
+		cp = *stack_a;
+		re = (*stack_a)->next;
+		while ((*stack_a)->next)
+			*stack_a = (*stack_a)->next;
+		(*stack_a)->next = cp;
+		cp->next = 0;
+		*stack_a = re;
 	}
 }
 
-void	rb(int **stacks, int u)
+void	rb(t_list **stack_b, int u)
 {
-	int	i;
+	t_list	*cp;
+	t_list	*re;
 
+	re = 0;
 	if (u)
 		ft_putstr("rb\n");
-	i = 1;
-	while (i < stacks[1][0])
+	if (*stack_b)
 	{
-		ft_swap(&stacks[1][i], &stacks[1][i + 1]);
-		i++;
+		cp = *stack_b;
+		re = (*stack_b)->next;
+		while ((*stack_b)->next)
+			*stack_b = (*stack_b)->next;
+		(*stack_b)->next = cp;
+		cp->next = 0;
+		*stack_b = re;
 	}
 }
 
-void	rr(int **stacks, int u)
+void	rr(t_list *stack_a, t_list *stack_b, int u)
 {
 	if (u)
 		ft_putstr("rr\n");
-	ra(stacks, 0);
-	rb(stacks, 0);
+	ra(&stack_a, 0);
+	rb(&stack_b, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 03:18:55 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/06 09:56:18 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/08 04:00:58 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ int			main(int ac, char **av)
 	c = 0;
 	if (ac < 2 || !(stack_a = cat_params(ac, av, &c)))
 	{
+		if (ac > 1)
 		ft_putstr("Error\n");
-		lst_free(&stack_a, &stack_b);
+			lst_free(&stack_a, &stack_b);
 		return (0);
 	}
 	else

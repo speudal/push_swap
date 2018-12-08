@@ -6,7 +6,7 @@
 /*   By: tduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 22:24:26 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/06 09:14:46 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/06 11:37:42 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ t_list		*lst_popfront(t_list *lst);
 t_list		*lst_popback(t_list *lst);
 void		lst_free(t_list **stack_a, t_list **stack_b);
 void		print_stacks(t_list *stack_a, t_list *stack_b);
+void		quickSort(t_list **stack);
 
 #endif

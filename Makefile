@@ -6,7 +6,7 @@
 #    By: tduval <tduval@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/02 17:10:02 by tduval            #+#    #+#              #
-#    Updated: 2018/12/06 10:20:27 by tduval           ###   ########.fr        #
+#    Updated: 2018/12/06 12:03:15 by tduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS_CHECKER		=	./srcs/checker.c			\
 						./moves/swaps.c
 
 SRCS_PUSH_SWAP		=	./srcs/push_swap.c			\
+						./liblst/print_stacks.c		\
 						./srcs/parser.c				\
 						./liblst/lst_free.c			\
 						./liblst/lst_new.c			\

@@ -6,7 +6,7 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 22:15:13 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/06 10:35:53 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/09 04:14:32 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,10 @@ static int		check_arg(char *avv, int *c)
 static int		check_args(int ac, char **av, int *c)
 {
 	int i;
-	int j;
 
 	i = 1;
 	while (i < ac)
 	{
-		j = 0;
 		if (!av[i][0])
 			return (0);
 		if (!(check_arg(av[i], c)))
@@ -104,12 +102,7 @@ static void		fill_stack(int ac, char **av, t_list **stack_a)
 t_list			*cat_params(int ac, char **av, int *c)
 {
 	t_list	*stack_a;
-	int		i;
-	int		j;
 
-	i = 1;
-	j = 0;
-	stack_a = 0;
 	if (!(check_args(ac, av, c)))
 		return (0);
 	*c = 1;

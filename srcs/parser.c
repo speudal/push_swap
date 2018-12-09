@@ -6,7 +6,7 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 22:15:13 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/09 04:14:32 by tduval           ###   ########.fr       */
+/*   Updated: 2018/12/09 04:27:00 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ t_list			*cat_params(int ac, char **av, int *c)
 {
 	t_list	*stack_a;
 
+	stack_a = 0;
 	if (!(check_args(ac, av, c)))
 		return (0);
 	*c = 1;

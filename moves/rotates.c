@@ -6,7 +6,7 @@
 /*   By: tduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 07:35:07 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/19 22:32:04 by tduval           ###   ########.fr       */
+/*   Updated: 2019/01/07 18:38:17 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ void	rb(t_list **stack_b, int u)
 	}
 }
 
-void	rr(t_list *stack_a, t_list *stack_b, int u)
+void	rr(t_list **stack_a, t_list **stack_b, int u)
 {
 	if (u)
 		ft_putstr("rr\n");
-	ra(&stack_a, 0);
-	rb(&stack_b, 0);
+	ra(stack_a, 0);
+	rb(stack_b, 0);
 }

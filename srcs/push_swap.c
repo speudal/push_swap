@@ -6,7 +6,7 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 03:18:55 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/22 19:31:37 by tduval           ###   ########.fr       */
+/*   Updated: 2019/01/05 15:28:25 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ int			main(int ac, char **av)
 			return (0);
 		}
 		opti_sort(&stack_a, &stack_b);
-//		sale_sort(&stack_a, &stack_b);
-	//	print_stacks(stack_a, stack_b);
+		//print_stacks(stack_a, stack_b);
 		lst_free(&stack_a, &stack_b);
 	}
 	return (0);

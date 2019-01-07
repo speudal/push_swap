@@ -6,7 +6,7 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 16:34:42 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/12 16:53:16 by tduval           ###   ########.fr       */
+/*   Updated: 2019/01/07 20:37:49 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	do_swap(char *line, t_list **stack_a, t_list **stack_b)
 	else if (!(ft_strcmp(line, "rb")))
 		rb(stack_b, 0);
 	else if (!(ft_strcmp(line, "rr")))
-		rr(*stack_a, *stack_b, 0);
+		rr(stack_a, stack_b, 0);
 	else if (!(ft_strcmp(line, "rra")))
 		rra(stack_a, 0);
 	else if (!(ft_strcmp(line, "rrb")))
@@ -79,8 +79,10 @@ static int	solve_it(t_list *stack_a)
 	if (check_sorted(stack_a) && !stack_b)
 	{
 		ft_putstr("OK\n");
+		lst_free(&stack_a, &stack_b);
 		return (0);
 	}
+		lst_free(&stack_a, &stack_b);
 	return (1);
 }
 
@@ -94,7 +96,7 @@ int			main(int ac, char **av)
 	{
 		if (ac > 1)
 			ft_putstr("Error\n");
-		lst_free(&stack_a, 0);
+			lst_free(&stack_a, 0);
 		return (0);
 	}
 	if (!(solve_it(stack_a)))

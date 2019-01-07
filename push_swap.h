@@ -6,7 +6,7 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 22:24:26 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/22 18:34:58 by tduval           ###   ########.fr       */
+/*   Updated: 2019/01/07 18:37:50 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void				pa(t_list **stack_a, t_list **stack_b, int u);
 void				pb(t_list **stack_a, t_list **stack_b, int u);
 void				ra(t_list **stack_a, int u);
 void				rb(t_list **stack_b, int u);
-void				rr(t_list *stack_a, t_list *stack_b, int u);
+void				rr(t_list **stack_a, t_list **stack_b, int u);
 void				rra(t_list **stack_a, int u);
 void				rrb(t_list **stack_b, int u);
 void				rrr(t_list *stack_a, t_list *stack_b, int u);

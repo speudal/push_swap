@@ -6,7 +6,7 @@
 /*   By: tduval <tduval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 23:41:18 by tduval            #+#    #+#             */
-/*   Updated: 2018/12/06 09:17:05 by tduval           ###   ########.fr       */
+/*   Updated: 2019/01/05 16:27:27 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,21 @@
 
 void	sa(t_list **stack_a, int u)
 {
-	t_list *cp;
-
-	cp = 0;
 	if (*stack_a && (*stack_a)->next)
 	{
 		if (u)
 			ft_putstr("sa\n");
-		cp = (*stack_a)->next;
-		(*stack_a)->next = (*stack_a)->next->next;
-		cp->next = *stack_a;
-		*stack_a = cp;
+		ft_swap(&(*stack_a)->n, &(*stack_a)->next->n);
 	}
 }
 
 void	sb(t_list **stack_b, int u)
 {
-	t_list *cp;
-
-	cp = 0;
 	if (*stack_b && (*stack_b)->next)
 	{
 		if (u)
-			ft_putstr("sa\n");
-		cp = (*stack_b)->next;
-		(*stack_b)->next = (*stack_b)->next->next;
-		cp->next = *stack_b;
-		*stack_b = cp;
+			ft_putstr("sb\n");
+		ft_swap(&(*stack_b)->n, &(*stack_b)->next->n);
 	}
 }
 

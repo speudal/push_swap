@@ -5,13 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/05 10:28:04 by tduval            #+#    #+#             */
-/*   Updated: 2019/01/05 10:28:34 by tduval           ###   ########.fr       */
+/*   Created: 2019/01/05 10:31:12 by tduval            #+#    #+#             */
+/*   Updated: 2019/01/05 10:31:24 by tduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include "libft.h"
 
 static int	free_all(char *line)
